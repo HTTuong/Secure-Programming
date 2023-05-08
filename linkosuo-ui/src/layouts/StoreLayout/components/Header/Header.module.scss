@@ -1,0 +1,147 @@
+.wrapper {
+    width: 100%;
+    position: relative;
+}
+
+.header {
+    position: absolute;
+    top: var(--header-only-policy);
+    color: var(--header-light-text-color);
+    width: 100%;
+    z-index: 4;
+    background-color: var(--white-color);
+    display: flex;
+    align-items: center;
+    padding: 0 5rem;
+    box-shadow: 0 -1px var(--header-border-color) inset;
+
+    &.has-overlay {
+        // position: fixed;
+        width: 100%;
+    }
+
+    &.scrolled {
+        position: fixed;
+        width: 100%;
+        top: 0;
+    }
+}
+
+.header-overlay {
+    position: absolute;
+    // top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+    visibility: hidden;
+    opacity: 0;
+    height: calc(var(--header-only-navbar) + 1px);
+    background-color: rgba(54, 54, 54, 0.45);
+    transition: all 0.27s ease-in-out;
+    transition-property: opacity, visibility;
+
+    &.show {
+        z-index: 0;
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.header-shadow {
+    display: none;
+    height: 70.5px;
+    width: 100%;
+    // position: absolute;
+}
+
+.menu-icon {
+    display: none;
+    padding: 1.4rem;
+    color: #1c1b1b;
+    cursor: pointer;
+
+    // & div {
+    //     display: flex;
+    //     align-items: center;
+    //     justify-content: center;
+    // }
+}
+
+.logo {
+    display: flex;
+    margin-right: 17px;
+    width: var(--header-logo-width);
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+//Tablet
+@media (max-width: 1180px) {
+    .header {
+        height: var(--header-only-navbar);
+        display: flex;
+        justify-content: space-between;
+        padding: 0 1.6rem;
+    }
+
+    .menu-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .logo {
+        margin: 0;
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+//Mobile
+@media (max-width: 768px) {
+    .header {
+        position: initial;
+        padding: 0.8rem 1.8rem;
+        // height: fit-content;
+    }
+
+    .header-shadow {
+        display: block;
+    }
+
+    .header-overlay {
+        display: none;
+    }
+
+    .logo {
+        width: 15rem;
+    }
+
+    .header-overlay {
+        height: 6rem;
+    }
+
+    .menu-icon {
+        justify-content: initial;
+        width: 3.2rem;
+        padding: 1rem 1rem 1rem 0;
+    }
+}
+@media (max-width: 300px) {
+    .header {
+        padding: 0.8rem 1.2rem;
+    }
+}
